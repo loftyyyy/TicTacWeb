@@ -46,6 +46,19 @@ hr {
   margin: 1em 0;
   padding: 0;
 }
+table {
+  border-collapse: collapse; /* Remove gaps between cells */
+}
+
+td {
+  width: 50px; /* Adjust the size as needed */
+  height: 50px;
+  border: 1px solid black;
+  text-align: center;
+  font-size: 30px;
+  cursor: pointer; /* Make the squares interactive */
+}
+
 
 /*
  * Remove the gap between audio, canvas, iframes,
