@@ -1,14 +1,14 @@
 const cells = document.querySelectorAll('td');
-const buttons = [["cell-0", "cell-1", "cell-2"], ["cell-3", "cell-4", "cell-5"], ["cell-6", "cell-7", "cell-8"]];
+const board = [[null,null,null], [null,null,null], [null,null,null]]
 
-let playerTurn = false;
+let playerTurn = true;
+
 cells.forEach(cell => {
   cell.addEventListener('click', (event) => {
     const clickedCell = event.target
     const cellText = clickedCell.textContent;
 
     if(cellText == ""){
-      console.log("true")
       if(playerTurn){
 
         clickedCell.textContent = "x";
@@ -17,25 +17,28 @@ cells.forEach(cell => {
         clickedCell.textContent = "o";
         playerTurn = true;
       }
-      evaluate(buttons)
+      evaluate(board)
 
     }
 
   });
 });
+cells.forEach(cell =>{
+  const row = parseInt(cell.dataset.row)
+  const col = parseInt(cell.dataset.col)
+  board[row][col] = cell;
+  console.log("I was ran");
+
+})
 
 function evaluate(board){
   //Vertical and Horizontal
-  // for(i = 0; i < 3; i++){
-  //   if(board[i][0].textContent == board[i][1].textContent && board[i][0].textContent == board[i][2].textContent && board[i][0].textContent != ""){
-  //     console.log("vertical win")
-  //     console.log(board[i][0].textContent)
-  //   }
-  // }
-  cells.forEach(cell => {
-    console.log(cell);
-
-  })
+  for(i = 0; i < 3; i++){
+    if(board[i][0].textContent === board[i][1].textContent && board[i][0].textContent === board[i][2].textContent && board[i][0].textContent !== ""){
+      console.log("vertical win")
+      console.log(board[i][0].textContent)
+    }
+  }
 
 
 }
