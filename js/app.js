@@ -26,12 +26,16 @@ cells.forEach(cell => {
 
 function evaluate(board){
   //Vertical and Horizontal
-  for(i = 0; i < 3; i++){
-    if(board[i][0].textContent == board[i][1].textContent && board[i][0].textContent == board[i][2].textContent && board[i][0].textContent != ""){
-      console.log("vertical win")
-      console.log(board[i][0].textContent)
-    }
-  }
+  // for(i = 0; i < 3; i++){
+  //   if(board[i][0].textContent == board[i][1].textContent && board[i][0].textContent == board[i][2].textContent && board[i][0].textContent != ""){
+  //     console.log("vertical win")
+  //     console.log(board[i][0].textContent)
+  //   }
+  // }
+  cells.forEach(cell => {
+    console.log(cell);
+
+  })
 
 
 }
