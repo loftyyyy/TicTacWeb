@@ -11,6 +11,13 @@ function clearBoard(){
   }
   playerTurn = true;
 }
+cells.forEach(cell =>{
+  const row = parseInt(cell.dataset.row)
+  const col = parseInt(cell.dataset.col)
+  board[row][col] = cell;
+  console.log("I was ran");
+
+})
 cells.forEach(cell => {
   cell.addEventListener('click', (event) => {
     const clickedCell = event.target
@@ -22,30 +29,24 @@ cells.forEach(cell => {
 
         clickedCell.textContent = "x";
         playerTurn = false;
-      }else{
-        if(evaluate(board) === 0){
-          clickedCell.textContent = "o";
-          playerTurn = true;
-        }else{
-          //create a win dialog.
-          setWin()
+        if(evaluate() === 0){
+
         }
       }
-      setWin()
 
+    }
+    if(evaluate() !== 0){
+      setWin();
     }
 
   });
 });
-cells.forEach(cell =>{
-  const row = parseInt(cell.dataset.row)
-  const col = parseInt(cell.dataset.col)
-  board[row][col] = cell;
-  console.log("I was ran");
 
-})
+function AiMove(depth){
 
-function evaluate(board){
+}
+
+function evaluate(){
   for(let i = 0; i < 3; i++){
     //Horizontal Win Check
     if((board[i][0].textContent === board[i][1].textContent) && (board[i][1].textContent === board[i][2].textContent) && board[i][0].textContent !== ""){
@@ -86,15 +87,15 @@ function evaluate(board){
 function setWin(){
   const header = document.getElementById("winHeader");
 
-  if(evaluate(board) === -1){
+  if(evaluate() === -1){
     header.textContent = "X won";
 
   }
-  if(evaluate(board) === 1){
+  if(evaluate() === 1){
     header.textContent = "O won";
 
   }
-  if(evaluate(board) === 2){
+  if(evaluate() === 2){
     header.textContent = "Draw";
 
   }
