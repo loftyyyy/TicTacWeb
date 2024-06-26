@@ -45,6 +45,62 @@ cells.forEach(cell => {
 function AiMove(depth){
 
 }
+function minimax(depth,alpha, beta, isMaximizing){
+  // Base Case
+  result = evaluate();
+
+  if(result !== 0){
+    return result;
+  }
+
+  if(depth === 9){
+    return 0;
+  }
+
+  // Base Case ends here.
+
+  if(isMaximizing){
+    let maxEval = Number.MIN_VALUE;
+    for(let i = 0; i < board.length; i++){
+      for(let j = 0; j < board[i].length; j++){
+        if(board[i][j].textContent === ""){
+          board[i][j].textContent = "o";
+          eval = minimax(depth + 1, alpha, beta, false);
+          board[i][j].textContent === "";
+          maxEval = Math.max(maxEval, eval);
+          alpha = Math.max(alpha, eval);
+          if(beta <= alpha){
+            break;
+          }
+
+
+        }
+      }
+    }
+    return maxEval;
+  }else{
+    let minEval = Number.MAX_VALUE;
+
+    for(let i = 0; i < board.length; i++){
+      for(let j = 0; j < board[i].length; j++){
+        if(board[i][j].textContent === ""){
+          board[i][j].textContent = "x";
+          eval = minimax(depth + 1, alpha, beta, true);
+          board[i][j].textContent === "";
+          minEval = Math.max(minEval, eval);
+          beta = Math.max(beta, eval);
+          if(beta <= alpha){
+            break;
+          }
+
+
+        }
+      }
+    }
+    return minEval;
+  }
+
+}
 
 function evaluate(){
   for(let i = 0; i < 3; i++){
