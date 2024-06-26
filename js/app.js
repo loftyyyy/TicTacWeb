@@ -3,6 +3,15 @@ const board = [[null,null,null], [null,null,null], [null,null,null]]
 
 let playerTurn = true;
 
+function clearBoard(){
+  for(i = 0; i < board.length; i++){
+    for(j = 0; j < board[i].length; j++){
+
+
+    }
+
+  }
+}
 cells.forEach(cell => {
   cell.addEventListener('click', (event) => {
     const clickedCell = event.target
