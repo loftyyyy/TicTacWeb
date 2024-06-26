@@ -1,11 +1,14 @@
 const cells = document.querySelectorAll('td');
 let board = [[null, null, null], [null, null, null], [null, null, null]];
+const header = document.getElementById("winHeader");
 
 let playerTurn = true;
 
 function clearBoard() {
   for (let i = 0; i < board.length; i++) {
     for (let j = 0; j < board[i].length; j++) {
+      header.textContent = "Tic Tac Toe with Alpha-Beta Pruning"
+
       board[i][j].textContent = "";
       board[i][j].style.backgroundColor = ""; // Reset cell color
     }
@@ -186,7 +189,6 @@ function setWin(evaluation) {
   }
 }
 function changeHeaderText(text) {
-  const header = document.getElementById("winHeader");
   const originalText = header.textContent;
   header.textContent = text;
   setTimeout(function() {
