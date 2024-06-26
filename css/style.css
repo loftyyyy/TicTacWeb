@@ -70,6 +70,11 @@ td {
   width: 100px; /* Adjust the size as needed */
   height: 100px;
 }
+button{
+  margin-top:20px ;
+  width: 90px;
+  height: 40px;
+}
 
 
 /*
