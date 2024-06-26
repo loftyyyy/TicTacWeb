@@ -30,6 +30,7 @@ cells.forEach(cell => {
         clickedCell.textContent = "x";
         playerTurn = false;
         if(evaluate() === 0){
+          AiMove(0); // depth is 0
 
         }
       }
@@ -43,19 +44,43 @@ cells.forEach(cell => {
 });
 
 function AiMove(depth){
+  let bestEval = Number.MIN_VALUE;
+  let bestRow = -1;
+  let bestCol = -1;
+
+
+  for(let i = 0; i < board.length; i++){
+    for(let j = 0; j < board[i].length; j++){
+      if(board[i][j].textContent === ""){
+        board[i][j].textContent = "o";
+        let eval = minimax(depth + 1, Number.MIN_VALUE, Number.MAX_VALUE, false);
+        board[i][j].textContent = "";
+        if (eval > bestEval){
+          bestEval = eval;
+          bestRow = i;
+          bestCol = j;
+
+        }
+      }
+    }
+  }
+  if((bestRow !== -1) && (bestCol !== -1)){
+    board[bestRow][bestCol].textContent = "o";
+    playerTurn = true;
+
+  }
+
+
 
 }
 function minimax(depth,alpha, beta, isMaximizing){
   // Base Case
   result = evaluate();
 
-  if(result !== 0){
+  if(result !== 0 || depth === 9){
     return result;
   }
 
-  if(depth === 9){
-    return 0;
-  }
 
   // Base Case ends here.
 
@@ -65,8 +90,8 @@ function minimax(depth,alpha, beta, isMaximizing){
       for(let j = 0; j < board[i].length; j++){
         if(board[i][j].textContent === ""){
           board[i][j].textContent = "o";
-          eval = minimax(depth + 1, alpha, beta, false);
-          board[i][j].textContent === "";
+          let eval = minimax(depth + 1, alpha, beta, false);
+          board[i][j].textContent = "";
           maxEval = Math.max(maxEval, eval);
           alpha = Math.max(alpha, eval);
           if(beta <= alpha){
@@ -85,15 +110,13 @@ function minimax(depth,alpha, beta, isMaximizing){
       for(let j = 0; j < board[i].length; j++){
         if(board[i][j].textContent === ""){
           board[i][j].textContent = "x";
-          eval = minimax(depth + 1, alpha, beta, true);
-          board[i][j].textContent === "";
-          minEval = Math.max(minEval, eval);
-          beta = Math.max(beta, eval);
+          let eval = minimax(depth + 1, alpha, beta, true);
+          board[i][j].textContent = "";
+          minEval = Math.min(minEval, eval);
+          beta = Math.min(beta, eval);
           if(beta <= alpha){
             break;
           }
-
-
         }
       }
     }
