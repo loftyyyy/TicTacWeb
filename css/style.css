@@ -70,6 +70,13 @@ td {
   width: 100px; /* Adjust the size as needed */
   height: 100px;
 }
+#algorithm-info {
+  background-color: #f0f0f0;  /* Light gray background */
+  padding: 15px;               /* Add padding around the text */
+  border: 1px solid #ccc;      /* Add a subtle border */
+  margin-top: 10px;            /* Add some space above the div */
+}
+
 button{
   margin-top:20px ;
   width: 90px;

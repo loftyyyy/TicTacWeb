@@ -1,3 +1,9 @@
+// NOTE: This was originally a Java project, and I already finished it. However, it was inconvenient for people to download the code to see how it worked, so I created a web-based version of the game.
+// This was done solely for the purpose of demonstrating the algorithm.
+/**
+ *
+ * @type {NodeListOf<HTMLElementTagNameMap[string]>}
+ */
 const cells = document.querySelectorAll('td');
 let board = [[null, null, null], [null, null, null], [null, null, null]];
 const header = document.getElementById("winHeader");
@@ -195,4 +201,18 @@ function changeHeaderText(text) {
     header.textContent = originalText;
   }, 1000);
 }
+
+window.addEventListener('load', () => {
+  const algorithmInfoDiv = document.getElementById('algorithm-info');
+  algorithmInfoDiv.innerHTML = `
+    <h3>About the Algorithm: Alpha-Beta Pruning</h3>
+    <p>
+      Alpha-Beta Pruning is a search algorithm that helps the computer play Tic-Tac-Toe optimally.
+      It works by looking ahead at possible moves and evaluating their outcomes, eliminating branches
+      that are unlikely to lead to a win. This allows the computer to make intelligent decisions quickly.
+    </p>
+    <p>Learn more about Alpha-Beta Pruning: <a href="https://en.wikipedia.org/wiki/Alpha%E2%80%93beta_pruning" target="_blank">Wikipedia</a></p>
+    <p>Note: This is just a web representation of the game tictactoe with the implementation of the minimax algorithm accompanied by alpha-beta pruning</p>
+  `;
+});
 
