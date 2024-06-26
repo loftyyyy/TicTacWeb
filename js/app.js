@@ -178,6 +178,18 @@ function setWin(){
     header.textContent = "Draw";
 
   }
+  function changeHeaderText(player){
+    const header = document.getElementById("winHeader");
+    const originalText = header.textContent;
+    const winner = player;
+
+    header.textContent = player;
+    setTimeout(function (){
+      header.textContent = originalText;
+    }, 1000)
+
+
+  }
 }
 //TODO: Add a winCheck for every move, and determine if there are no winners, make the AI move.
 // Fix the board text bug where you can change the player cells if yuo click it more than one time.
