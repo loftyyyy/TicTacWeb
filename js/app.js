@@ -141,13 +141,11 @@ function evaluate(){
   }
 
   //Diagonals
-  if((board[0][0].textContent === board[1][1].textContent) && (board[1][1].textContent === board[2][2]) && board[1][1].textContent !== "" ){
+  if ((board[0][0].textContent === board[1][1].textContent) && (board[1][1].textContent === board[2][2].textContent) && board[1][1].textContent !== "") {
     return board[0][0].textContent === "x" ? -1 : 1;
-
   }
-  if((board[0][2].textContent === board[1][1].textContent) && (board[1][1].textContent === board[2][0]) && board[1][1].textContent !== "" ){
+  if ((board[0][2].textContent === board[1][1].textContent) && (board[1][1].textContent === board[2][0].textContent) && board[1][1].textContent !== "") {
     return board[0][2].textContent === "x" ? -1 : 1;
-
   }
 
   for(let i = 0; i < board.length; i++){
@@ -164,18 +162,17 @@ function evaluate(){
 }
 
 function setWin(){
-  const header = document.getElementById("winHeader");
 
   if(evaluate() === -1){
-    header.textContent = "X won";
+    changeHeaderText( "X won");
 
   }
   if(evaluate() === 1){
-    header.textContent = "O won";
+    changeHeaderText( "O won");
 
   }
   if(evaluate() === 2){
-    header.textContent = "Draw";
+    changeHeaderText("Draw!");
 
   }
   function changeHeaderText(player){
