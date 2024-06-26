@@ -59,6 +59,18 @@ td {
   cursor: pointer; /* Make the squares interactive */
 }
 
+#mainDiv {
+  display: flex;        /* Enable flexbox */
+  flex-direction: column; /* Arrange items vertically */
+  justify-content: center; /* Center vertically */
+  align-items: center;   /* Center horizontally */
+  min-height: 100vh;     /* Ensure the div covers the entire viewport height */
+}
+td {
+  width: 100px; /* Adjust the size as needed */
+  height: 100px;
+}
+
 
 /*
  * Remove the gap between audio, canvas, iframes,
