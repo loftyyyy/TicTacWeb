@@ -53,7 +53,7 @@ cells.forEach(cell => {
 });
 
 function AiMove(depth) {
-  let bestEval = Number.MIN_VALUE;
+  let bestEval = Number.NEGATIVE_INFINITY;
   let bestMove = { row: -1, col: -1 };
 
   for (let i = 0; i < board.length; i++) {
@@ -85,7 +85,7 @@ function minimax(depth, alpha, beta, isMaximizing) {
   }
 
   if (isMaximizing) {
-    let maxEval = Number.MIN_VALUE;
+    let maxEval = Number.NEGATIVE_INFINITY;
     for (let i = 0; i < board.length; i++) {
       for (let j = 0; j < board[i].length; j++) {
         if (board[i][j].textContent === "") {
@@ -102,7 +102,7 @@ function minimax(depth, alpha, beta, isMaximizing) {
     }
     return maxEval;
   } else {
-    let minEval = Number.MAX_VALUE;
+    let minEval = Number.POSITIVE_INFINITY;
     for (let i = 0; i < board.length; i++) {
       for (let j = 0; j < board[i].length; j++) {
         if (board[i][j].textContent === "") {
