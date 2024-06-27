@@ -80,7 +80,7 @@ function minimax(depth, alpha, beta, isMaximizing) {
   const result = evaluate().result;
 
   // Base case
-  if (result !== 0 || depth === 9) {
+  if (result !== 0 || depth === 1000) {
     return result;
   }
 
